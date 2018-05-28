@@ -1,12 +1,33 @@
-<?= $this->title = 'Modül çalışıyor.'; ?>
-<div class="site-index">
+<?php
 
-    <div class="jumbotron">
-        <h1>Kou Osl Yii2 App</h1>
+use yii\helpers\Html;
+use yii\grid\GridView;
 
-        <p class="lead">Örnek uygulamayı başarılı bir şekilde çalıştırdınız.</p>
+/* @var $this yii\web\View */
+/* @var $dataProvider yii\data\ActiveDataProvider */
 
-        <p><a class="btn btn-lg btn-success" href="#">Modüller ve konfürgasyon!</a></p>
-    </div>
+$this->title = 'Cevrimicis';
+$this->params['breadcrumbs'][] = $this->title;
+?>
+<div class="cevrimici-index">
 
+    <h1><?= Html::encode($this->title) ?></h1>
+
+    <p>
+        <?= Html::a('Create Cevrimici', ['create'], ['class' => 'btn btn-success']) ?>
+    </p>
+
+    <?= GridView::widget([
+        'dataProvider' => $dataProvider,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+
+            'cevrimciID',
+            'eposta',
+            'konu:ntext',
+            'icerik:ntext',
+
+            ['class' => 'yii\grid\ActionColumn'],
+        ],
+    ]); ?>
 </div>
